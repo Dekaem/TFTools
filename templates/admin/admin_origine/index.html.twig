@@ -1,0 +1,50 @@
+{% extends '/admin/admin_base.html.twig' %}
+
+{% block title %}Origines{% endblock %}
+
+{% block body %}
+
+    <div class="container-admin">
+
+        <h1>Liste des origines</h1>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <table class="table" >
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Actions</th>
+                <th scope="col">
+                    <a href="{{ path('admin_origine_ajouter') }}">➕</a>
+                </th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for origine in origines %}
+                <tr>
+                    <th scope="row">{{ origine.id }}</th>
+                    <td class="img-name">
+                        <img src="{{ origine.illustration }}" alt="{{ origine.nom }}">
+                        {{ origine.nom }}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_origine_modifier', {'id': origine.id}) }}">🖊️</a>
+                        <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ origine.nom }} ? Attention cette action est irréversible.')" href="{{ path('admin_origine_supprimer', {'id': origine.id}) }}">🗑️</a>
+                    </td>
+                </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

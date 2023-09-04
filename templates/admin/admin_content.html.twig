@@ -1,0 +1,51 @@
+{% extends '/admin/admin_base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    <div class="container-accueil">
+        <div class="row mt-5">
+            <a href="{{ path('admin_actualite_lister') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Actualités</h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombreActu }} actualité{{ nombreActu > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ path('admin_champion_lister') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Champions</h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombreChamp }} champion{{ nombreChamp > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ path('admin_composition_lister') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Compositions</h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombreCompo }} composition{{ nombreCompo > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ path('admin_origine_lister') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Origines</h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombreOrigine }} origine{{ nombreOrigine > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,176 @@
+@import "~bootstrap/scss/bootstrap";
+
+* {
+    margin: 0;
+    padding: 0;
+    --blue: #1061FF;
+    --lightblue: #3479FF;
+}
+
+body {
+    background-color: #fff;
+    font-family: Arial;
+
+    //No scrollbar
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// ---------------------------------------------------  NAVBAR  ----------------------------------------------------- //
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    //position: absolute;
+    background-color: var(--blue);
+    width: 100%;
+    height: 80px;
+
+    .nav-left, .nav-right {
+        display: flex;
+        align-items: center;
+        width: 300px;
+    }
+
+    .nav-left {
+        justify-content: start;
+        margin-left: 50px;
+        gap: 50px;
+
+
+        #riot-games {
+            height: 26px;
+            display: flex;
+
+            img {
+                height: 26px;
+                width: auto;
+            }
+        }
+    }
+
+    .nav-right {
+        justify-content: end;
+        margin-right: 50px;
+        gap: 15px;
+    }
+
+    #tftools {
+        height: 58px;
+
+        img {
+            height: 58px;
+            width: auto;
+        }
+    }
+
+    a {
+        color: #fff;
+        text-transform:  uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .nav-btn {
+        border-radius: 6px;
+        background-color: var(--lightblue);
+        padding: 9px 18px;
+    }
+
+    select {
+        font-size: 16px;
+        padding: 9px 18px;
+        border: none;
+        border-radius: 6px;
+    }
+
+
+    ul {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+
+        margin-bottom: 0 !important;
+        padding-left: 0 !important;
+    }
+}
+
+// ---------------------------------------------------  CONTENT  ---------------------------------------------------- //
+
+.container-accueil {
+    padding: 30px 150px;
+
+    a {
+        text-decoration: none;
+    }
+
+    h5 {
+        color: var(--blue);
+        font-size: 22px;
+    }
+
+    h5, p {
+        text-align: center;
+    }
+
+    .mt-5 {
+        row-gap: 50px;
+    }
+
+    .card-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        width: 450px;
+    }
+}
+
+// -----------------------------------------------------  ALL  ------------------------------------------------------ //
+.container-admin {
+    padding: 40px 100px;
+
+    h1 {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    table {
+        th, td {
+            vertical-align: middle;
+        }
+
+        a {
+            text-decoration: none;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+// --------------------------------------------------  CHAMPION  ---------------------------------------------------- //
+.container-admin {
+
+    table {
+        .img-name {
+            img {
+                width: 50px;
+            }
+        }
+
+        .cost {
+            img {
+                width: 17px;
+            }
+        }
+    }
+}
+
+

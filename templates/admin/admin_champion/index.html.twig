@@ -1,0 +1,61 @@
+{% extends '/admin/admin_base.html.twig' %}
+
+{% block title %}Champions{% endblock %}
+
+{% block body %}
+
+    <div class="container-admin">
+
+        <h1>Liste des champions</h1>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <table class="table" >
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Origine(s)</th>
+                <th scope="col">Coût</th>
+                <th scope="col">Actions</th>
+                <th scope="col">
+                    <a href="{{ path('admin_champion_ajouter') }}">➕</a>
+                </th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for champion in champions %}
+                <tr>
+                    <th scope="row">{{ champion.id }}</th>
+                    <td class="img-name">
+                        <img src="{{ champion.illustration }}" alt="{{ champion.nom }}">
+                        {{ champion.nom }}
+                    </td>
+                    <td>
+                        {% for origine in champion.origines %}
+                            {{ origine.nom }} /
+                        {% endfor %}
+                    </td>
+                    <td class="cost">
+                        {{ champion.cout }}
+                        <img src="{{ asset('images/po-icon.svg') }}" alt="Pièce d'or">
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_champion_modifier', {'id': champion.id}) }}">🖊️</a>
+                        <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ champion.nom }} ? Attention cette action est irréversible.')" href="{{ path('admin_champion_supprimer', {'id': champion.id}) }}">🗑️</a>
+                    </td>
+                </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

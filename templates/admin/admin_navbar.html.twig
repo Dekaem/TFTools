@@ -1,0 +1,28 @@
+<nav>
+    <div class="nav-left">
+        <div id="riot-games">
+            <img src="{{ asset('images/admindashboard.svg') }}" alt="Riot Games Logo">
+        </div>
+
+        <ul>
+            <li><a href="{{ path('admin_actualite_lister') }}">Actualités</a></li>
+            <li><a href="{{ path('admin_champion_lister') }}">Champions</a></li>
+            <li><a href="{{ path('admin_composition_lister') }}">Compositions</a></li>
+            <li><a href="{{ path('admin_origine_lister') }}">Origines</a></li>
+        </ul>
+    </div>
+
+    <a id="tftools" class href="{{ path('admin') }}">
+        <img src="{{ asset('images/tft-icon.svg') }}" alt="TFTools Logo">
+    </a>
+
+    <div class="nav-right">
+        <select>
+            <option>Admin</option>
+            <option>Anonyme</option>
+        </select>
+        <a class="nav-btn" href="{{ path('app') }}">Déconnexion</a>
+    </div>
+
+
+</nav>

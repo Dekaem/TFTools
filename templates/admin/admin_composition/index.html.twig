@@ -1,0 +1,48 @@
+{% extends '/admin/admin_base.html.twig' %}
+
+{% block title %}Compositions{% endblock %}
+
+{% block body %}
+
+    <div class="container-admin">
+
+        <h1>Liste des compositions</h1>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <table class="table" >
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Classement (selon %WinRate)</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Actions</th>
+                <th scope="col">
+                    <a href="{{ path('admin_composition_ajouter') }}">➕</a>
+                </th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for composition in compositions %}
+                <tr>
+                    <th scope="row">{{ composition.id }}</th>
+                    <th >Top {{ composition.classement }}</th>
+                    <td>{{ composition.nom }}</td>
+                    <td>
+                        <a href="{{ path('admin_composition_modifier', {'id': composition.id}) }}">🖊️</a>
+                        <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer la composition {{ composition.nom }} ? Attention cette action est irréversible.')" href="{{ path('admin_composition_supprimer', {'id': composition.id}) }}">🗑️</a>
+                    </td>
+                </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
