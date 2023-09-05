@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230831150152 extends AbstractMigration
+final class Version20230905125832 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20230831150152 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE composition ADD classement INT NOT NULL');
+        $this->addSql('ALTER TABLE champion CHANGE cout tier INT NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE composition DROP classement');
+        $this->addSql('ALTER TABLE champion CHANGE tier cout INT NOT NULL');
     }
 }

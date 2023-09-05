@@ -14,7 +14,8 @@ class OrigineType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('illustration')
+            ->add('description')
+            ->add('placeMoyenne')
             ->add('valider', SubmitType::class, ['attr' => ['class' => 'btn btn-primary']])
         ;
     }

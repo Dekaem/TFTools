@@ -42,14 +42,33 @@ nav {
         margin-left: 50px;
         gap: 50px;
 
+        .logos {
+            a {
+                height: 58px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+                width: 174px;
 
-        #riot-games {
-            height: 26px;
-            display: flex;
+                #riot-games {
+                    height: 26px;
+                    width: auto;
+                }
 
-            img {
-                height: 26px;
-                width: auto;
+
+                #tftools {
+                    height: 58px;
+                    width: auto;
+                }
+            }
+
+        }
+
+        ul {
+            li {
+                color: #fff;
             }
         }
     }
@@ -58,15 +77,6 @@ nav {
         justify-content: end;
         margin-right: 50px;
         gap: 15px;
-    }
-
-    #tftools {
-        height: 58px;
-
-        img {
-            height: 58px;
-            width: auto;
-        }
     }
 
     a {

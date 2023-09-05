@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ChampionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ChampionRepository::class)]
@@ -19,10 +20,7 @@ class Champion
     private ?string $nom = null;
 
     #[ORM\Column]
-    private ?int $cout = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $illustration = null;
+    private ?int $tier = null;
 
     #[ORM\ManyToMany(targetEntity: Origine::class, inversedBy: 'champions')]
     private Collection $origines;
@@ -30,10 +28,17 @@ class Champion
     #[ORM\ManyToMany(targetEntity: Composition::class, inversedBy: 'champions')]
     private Collection $compositions;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
+    #[ORM\ManyToMany(targetEntity: Objet::class, inversedBy: 'champions')]
+    private Collection $stuff;
+
     public function __construct()
     {
         $this->origines = new ArrayCollection();
         $this->compositions = new ArrayCollection();
+        $this->stuff = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -53,26 +58,14 @@ class Champion
         return $this;
     }
 
-    public function getCout(): ?int
+    public function getTier(): ?int
     {
-        return $this->cout;
+        return $this->tier;
     }
 
-    public function setCout(int $cout): static
+    public function setTier(int $tier): static
     {
-        $this->cout = $cout;
-
-        return $this;
-    }
-
-    public function getIllustration(): ?string
-    {
-        return $this->illustration;
-    }
-
-    public function setIllustration(?string $illustration): static
-    {
-        $this->illustration = $illustration;
+        $this->tier = $tier;
 
         return $this;
     }
@@ -121,6 +114,42 @@ class Champion
     public function removeComposition(Composition $composition): static
     {
         $this->compositions->removeElement($composition);
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Objet>
+     */
+    public function getStuff(): Collection
+    {
+        return $this->stuff;
+    }
+
+    public function addStuff(Objet $stuff): static
+    {
+        if (!$this->stuff->contains($stuff)) {
+            $this->stuff->add($stuff);
+        }
+
+        return $this;
+    }
+
+    public function removeStuff(Objet $stuff): static
+    {
+        $this->stuff->removeElement($stuff);
 
         return $this;
     }

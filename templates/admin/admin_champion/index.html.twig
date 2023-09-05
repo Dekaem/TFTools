@@ -21,7 +21,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nom</th>
-                <th scope="col">Origine(s)</th>
+                <th scope="col">Trait(s)</th>
                 <th scope="col">Coût</th>
                 <th scope="col">Actions</th>
                 <th scope="col">
@@ -36,16 +36,16 @@
                 <tr>
                     <th scope="row">{{ champion.id }}</th>
                     <td class="img-name">
-                        <img src="{{ champion.illustration }}" alt="{{ champion.nom }}">
+                        <img src="https://www.mobafire.com/images/tft/set9/champion/icon/{{ champion.nom | lower }}.png" alt="{{ champion.nom }}">
                         {{ champion.nom }}
                     </td>
-                    <td>
+                    <td class="td-trait">
                         {% for origine in champion.origines %}
-                            {{ origine.nom }} /
+                            <span>{{ origine.nom }}</span>
                         {% endfor %}
                     </td>
                     <td class="cost">
-                        {{ champion.cout }}
+                        {{ champion.tier }}
                         <img src="{{ asset('images/po-icon.svg') }}" alt="Pièce d'or">
                     </td>
                     <td>

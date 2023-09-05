@@ -1,20 +1,25 @@
 <nav>
     <div class="nav-left">
-        <div id="riot-games">
-            <img src="{{ asset('images/admindashboard.svg') }}" alt="Riot Games Logo">
+        <div class="logos">
+            <a href="{{ path('admin') }}">
+                <img id="tftools" src="{{ asset('images/tft-icon.svg') }}" alt="TFTools Logo">
+                <img id="riot-games" src="{{ asset('images/admindashboard.svg') }}" alt="Riot Games Logo">
+            </a>
         </div>
 
         <ul>
+            <li><a href="#">Utilisateurs</a></li>
+            <li>|</li>
             <li><a href="{{ path('admin_actualite_lister') }}">Actualités</a></li>
+            <li><a href="#">Items</a></li>
+            <li><a href="#">Objets</a></li>
+            <li><a href="{{ path('admin_origine_lister') }}">Traits</a></li>
+            <li><a href="#">Paliers</a></li>
             <li><a href="{{ path('admin_champion_lister') }}">Champions</a></li>
             <li><a href="{{ path('admin_composition_lister') }}">Compositions</a></li>
-            <li><a href="{{ path('admin_origine_lister') }}">Origines</a></li>
+            <li><a href="#">Légendes</a></li>
         </ul>
     </div>
-
-    <a id="tftools" class href="{{ path('admin') }}">
-        <img src="{{ asset('images/tft-icon.svg') }}" alt="TFTools Logo">
-    </a>
 
     <div class="nav-right">
         <select>

@@ -6,6 +6,7 @@ use App\Entity\Champion;
 use App\Entity\Origine;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,8 +17,13 @@ class ChampionType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('cout')
-            ->add('illustration')
+            ->add('tier', null, [
+                'attr' => [
+                    'min' => 1,
+                    'max' => 5,
+                ]
+            ])
+            ->add('description')
             ->add('origines', EntityType::class, [
                 'class' => Origine::class,
                 'multiple' => true,

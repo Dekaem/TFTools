@@ -20,7 +20,7 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Classement (selon %WinRate)</th>
+                <th scope="col">Place moyenne</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Actions</th>
                 <th scope="col">
@@ -34,7 +34,7 @@
             {% for composition in compositions %}
                 <tr>
                     <th scope="row">{{ composition.id }}</th>
-                    <th >Top {{ composition.classement }}</th>
+                    <th >{{ composition.placeMoyenne }}</th>
                     <td>{{ composition.nom }}</td>
                     <td>
                         <a href="{{ path('admin_composition_modifier', {'id': composition.id}) }}">🖊️</a>

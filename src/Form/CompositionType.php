@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\Champion;
 use App\Entity\Composition;
 use App\Entity\Ville;
+use App\Repository\ChampionRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,12 +19,18 @@ class CompositionType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('classement')
+            ->add('placeMoyenne')
             ->add('champions', EntityType::class, [
                 'class' => Champion::class,
                 'multiple' => true,
-                'choice_label' => 'nom',
-                'required' => false
+                'choice_label' => function (Champion $champion) {
+                     return 'Tier ' . $champion->getTier() . ' - ' . $champion->getNom();
+                },
+                'required' => false,
+                'query_builder' => function (ChampionRepository $championRepository): QueryBuilder {
+                    return $championRepository->createQueryBuilder('c')
+                        ->orderBy('c.tier', 'ASC');
+                },
             ])
             ->add('valider', SubmitType::class, ['attr' => ['class' => 'btn btn-primary']])
         ;

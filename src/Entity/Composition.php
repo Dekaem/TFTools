@@ -18,11 +18,14 @@ class Composition
     #[ORM\Column(length: 100)]
     private ?string $nom = null;
 
-    #[ORM\Column]
-    private ?int $classement = null;
-
     #[ORM\ManyToMany(targetEntity: Champion::class, mappedBy: 'compositions')]
     private Collection $champions;
+
+    #[ORM\Column]
+    private ?float $placeMoyenne = null;
+
+    #[ORM\ManyToOne(inversedBy: 'compositions')]
+    private ?Legende $legende = null;
 
     public function __construct()
     {
@@ -42,18 +45,6 @@ class Composition
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getClassement(): ?int
-    {
-        return $this->classement;
-    }
-
-    public function setClassement(int $classement): static
-    {
-        $this->classement = $classement;
 
         return $this;
     }
@@ -81,6 +72,30 @@ class Composition
         if ($this->champions->removeElement($champion)) {
             $champion->removeComposition($this);
         }
+
+        return $this;
+    }
+
+    public function getPlaceMoyenne(): ?float
+    {
+        return $this->placeMoyenne;
+    }
+
+    public function setPlaceMoyenne(float $placeMoyenne): static
+    {
+        $this->placeMoyenne = $placeMoyenne;
+
+        return $this;
+    }
+
+    public function getLegende(): ?Legende
+    {
+        return $this->legende;
+    }
+
+    public function setLegende(?Legende $legende): static
+    {
+        $this->legende = $legende;
 
         return $this;
     }

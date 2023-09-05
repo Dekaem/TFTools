@@ -21,6 +21,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nom</th>
+                <th scope="col">Place moyenne</th>
                 <th scope="col">Actions</th>
                 <th scope="col">
                     <a href="{{ path('admin_origine_ajouter') }}">➕</a>
@@ -34,9 +35,10 @@
                 <tr>
                     <th scope="row">{{ origine.id }}</th>
                     <td class="img-name">
-                        <img src="{{ origine.illustration }}" alt="{{ origine.nom }}">
+                        <img src="https://rerollcdn.com/icons/{{ origine.nom }}.png" alt="{{ origine.nom }}">
                         {{ origine.nom }}
                     </td>
+                    <td >{{ origine.placeMoyenne }}</td>
                     <td>
                         <a href="{{ path('admin_origine_modifier', {'id': origine.id}) }}">🖊️</a>
                         <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ origine.nom }} ? Attention cette action est irréversible.')" href="{{ path('admin_origine_supprimer', {'id': origine.id}) }}">🗑️</a>
