@@ -3,15 +3,81 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-
     <div class="container-accueil">
-        <div class="row mt-5">
+        <div class="row user">
+            <a href="{{ path('admin') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fa-solid fa-user"></i> Utilisateurs
+                        </h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombreUser }} utilisateur{{ nombreUser > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <hr class="separator"></hr>
+
+        <div class="row">
             <a href="{{ path('admin_actualite_lister') }}" class="col-4 card-center">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Actualités</h5>
+                        <h5 class="card-title">
+                            <i class="fa-solid fa-newspaper"></i> Actualités
+                        </h5>
                         <p class="card-text">
                             Il y a actuellement {{ nombreActu }} actualité{{ nombreActu > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ path('admin_item_lister') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fa-solid fa-puzzle-piece"></i> Items
+                        </h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombreItem }} item{{ nombreItem > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ path('admin_objet_lister') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fa-solid fa-cubes"></i> Objets
+                        </h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombreObjet }} objet{{ nombreObjet > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ path('admin_origine_lister') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fa-regular fa-address-card"></i> Traits
+                        </h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombreOrigine }} trait{{ nombreOrigine > 1 ? 's' : '' }}.
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ path('admin_palier_lister') }}" class="col-4 card-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fa-solid fa-ranking-star"></i> Paliers
+                        </h5>
+                        <p class="card-text">
+                            Il y a actuellement {{ nombrePalier }} palier{{ nombrePalier > 1 ? 's' : '' }}.
                         </p>
                     </div>
                 </div>
@@ -19,7 +85,9 @@
             <a href="{{ path('admin_champion_lister') }}" class="col-4 card-center">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Champions</h5>
+                        <h5 class="card-title">
+                            <i class="fa-solid fa-street-view"></i> Champions
+                        </h5>
                         <p class="card-text">
                             Il y a actuellement {{ nombreChamp }} champion{{ nombreChamp > 1 ? 's' : '' }}.
                         </p>
@@ -29,19 +97,23 @@
             <a href="{{ path('admin_composition_lister') }}" class="col-4 card-center">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Compositions</h5>
+                        <h5 class="card-title">
+                            <i class="fa-solid fa-users-rays"></i> Compositions
+                        </h5>
                         <p class="card-text">
                             Il y a actuellement {{ nombreCompo }} composition{{ nombreCompo > 1 ? 's' : '' }}.
                         </p>
                     </div>
                 </div>
             </a>
-            <a href="{{ path('admin_origine_lister') }}" class="col-4 card-center">
+            <a href="{{ path('admin_legende_lister') }}" class="col-4 card-center">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Origines</h5>
+                        <h5 class="card-title">
+                            <i class="fa-solid fa-hand-holding-heart"></i> Légendes
+                        </h5>
                         <p class="card-text">
-                            Il y a actuellement {{ nombreOrigine }} origine{{ nombreOrigine > 1 ? 's' : '' }}.
+                            Il y a actuellement {{ nombreLegende }} légende{{ nombreLegende > 1 ? 's' : '' }}.
                         </p>
                     </div>
                 </div>

@@ -2,12 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Actualite;
 use App\Entity\Composition;
-use App\Form\ActualiteType;
-use App\Form\ChampionType;
 use App\Form\CompositionType;
-use App\Repository\ActualiteRepository;
 use App\Repository\CompositionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

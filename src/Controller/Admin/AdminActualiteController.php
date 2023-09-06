@@ -24,7 +24,7 @@ class AdminActualiteController extends AbstractController {
     #[Route('/modifier/{id}', name: '_modifier')]
     public function editer(Request $request, EntityManagerInterface $entityManager, Actualite $actualite): Response {
 
-        $msg = $actualite->getId() == null ? "L 'actualité a été ajoutée avec succès !" : "L 'actualité a été modifiée avec succès !";
+        $msg = $actualite->getId() == null ? "L'actualité a été ajoutée avec succès !" : "L'actualité a été modifiée avec succès !";
         $form = $this->createForm(ActualiteType::class, $actualite);
         $form->handleRequest($request);
 

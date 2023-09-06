@@ -67,8 +67,20 @@ nav {
         }
 
         ul {
-            li {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+
+            margin-bottom: 0 !important;
+            padding-left: 0 !important;
+
+
+            li, i {
                 color: #fff;
+            }
+
+            i {
+                font-size: 18px;
             }
         }
     }
@@ -99,16 +111,6 @@ nav {
         border: none;
         border-radius: 6px;
     }
-
-
-    ul {
-        display: flex;
-        gap: 30px;
-        list-style: none;
-
-        margin-bottom: 0 !important;
-        padding-left: 0 !important;
-    }
 }
 
 // ---------------------------------------------------  CONTENT  ---------------------------------------------------- //
@@ -129,7 +131,18 @@ nav {
         text-align: center;
     }
 
-    .mt-5 {
+    .separator {
+        margin: 50px 0 !important;
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+
+    .user {
+        justify-content: center;
+    }
+
+    .row {
         row-gap: 50px;
     }
 

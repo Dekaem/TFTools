@@ -8,16 +8,61 @@
         </div>
 
         <ul>
-            <li><a href="#">Utilisateurs</a></li>
+            <li>
+                <a href="#">
+                    <i title="Utilisateurs" class="fa-solid fa-user"></i>
+                </a>
+            </li>
+
             <li>|</li>
-            <li><a href="{{ path('admin_actualite_lister') }}">Actualités</a></li>
-            <li><a href="#">Items</a></li>
-            <li><a href="#">Objets</a></li>
-            <li><a href="{{ path('admin_origine_lister') }}">Traits</a></li>
-            <li><a href="#">Paliers</a></li>
-            <li><a href="{{ path('admin_champion_lister') }}">Champions</a></li>
-            <li><a href="{{ path('admin_composition_lister') }}">Compositions</a></li>
-            <li><a href="#">Légendes</a></li>
+
+            <li>
+                <a href="{{ path('admin_actualite_lister') }}">
+                    <i title="Actualités" class="fa-solid fa-newspaper"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i title="Items" class="fa-solid fa-puzzle-piece"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i title="Objets" class="fa-solid fa-cubes"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ path('admin_origine_lister') }}">
+                    <i title="Traits" class="fa-regular fa-address-card"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i title="Paliers" class="fa-solid fa-ranking-star"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ path('admin_champion_lister') }}">
+                    <i title="Champions" class="fa-solid fa-street-view"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ path('admin_composition_lister') }}">
+                    <i title="Compositions" class="fa-solid fa-users-rays"></i>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i title="Légendes" class="fa-solid fa-hand-holding-heart"></i>
+                </a>
+            </li>
         </ul>
     </div>
 
@@ -26,7 +71,7 @@
             <option>Admin</option>
             <option>Anonyme</option>
         </select>
-        <a class="nav-btn" href="{{ path('app') }}">Déconnexion</a>
+        <a class="nav-btn" href="{{ path('home') }}">Déconnexion</a>
     </div>
 
 

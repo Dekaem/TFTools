@@ -2,11 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Champion;
 use App\Entity\Origine;
-use App\Form\ChampionType;
 use App\Form\OrigineType;
-use App\Repository\ChampionRepository;
 use App\Repository\OrigineRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

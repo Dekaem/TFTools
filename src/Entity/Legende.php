@@ -21,7 +21,7 @@ class Legende
     #[ORM\Column(length: 50)]
     private ?string $specialite = null;
 
-    #[ORM\OneToMany(mappedBy: 'legende', targetEntity: Composition::class)]
+    #[ORM\OneToMany(mappedBy: 'admin_legende', targetEntity: Composition::class)]
     private Collection $compositions;
 
     public function __construct()

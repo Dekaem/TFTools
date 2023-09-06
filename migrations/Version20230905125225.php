@@ -22,7 +22,7 @@ final class Version20230905125225 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE champion_objet (champion_id INT NOT NULL, objet_id INT NOT NULL, INDEX IDX_F4BC1791FA7FD7EB (champion_id), INDEX IDX_F4BC1791F520CF5A (objet_id), PRIMARY KEY(champion_id, objet_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE item (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(100) NOT NULL, description LONGTEXT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE legende (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(100) NOT NULL, specialite VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE admin_legende (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(100) NOT NULL, specialite VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE objet (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(100) NOT NULL, description LONGTEXT NOT NULL, embleme TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE objet_item (objet_id INT NOT NULL, item_id INT NOT NULL, INDEX IDX_3DF9AC57F520CF5A (objet_id), INDEX IDX_3DF9AC57126F525E (item_id), PRIMARY KEY(objet_id, item_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE palier (id INT AUTO_INCREMENT NOT NULL, numero INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -35,7 +35,7 @@ final class Version20230905125225 extends AbstractMigration
         $this->addSql('ALTER TABLE palier_origine ADD CONSTRAINT FK_38AEC7160E28355 FOREIGN KEY (palier_id) REFERENCES palier (id)');
         $this->addSql('ALTER TABLE palier_origine ADD CONSTRAINT FK_38AEC7187998E FOREIGN KEY (origine_id) REFERENCES origine (id)');
         $this->addSql('ALTER TABLE composition ADD legende_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE composition ADD CONSTRAINT FK_C7F4347F6B12637 FOREIGN KEY (legende_id) REFERENCES legende (id)');
+        $this->addSql('ALTER TABLE composition ADD CONSTRAINT FK_C7F4347F6B12637 FOREIGN KEY (legende_id) REFERENCES admin_legende (id)');
         $this->addSql('CREATE INDEX IDX_C7F4347F6B12637 ON composition (legende_id)');
     }
 
@@ -51,7 +51,7 @@ final class Version20230905125225 extends AbstractMigration
         $this->addSql('ALTER TABLE palier_origine DROP FOREIGN KEY FK_38AEC7187998E');
         $this->addSql('DROP TABLE champion_objet');
         $this->addSql('DROP TABLE item');
-        $this->addSql('DROP TABLE legende');
+        $this->addSql('DROP TABLE admin_legende');
         $this->addSql('DROP TABLE objet');
         $this->addSql('DROP TABLE objet_item');
         $this->addSql('DROP TABLE palier');
