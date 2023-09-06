@@ -2,7 +2,18 @@
     <div class="nav-left">
         <div id="riot-games">
             <img src="{{ asset('images/riot.svg') }}" alt="Riot Games Logo">
-            <div class="led"></div>
+
+            {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="led led-admin"></div>
+                {% elseif app.user.riotAccount is not null%}
+                    <div class="led led-linked"></div>
+                {% else %}
+                    <div class="led led-not-linked"></div>
+                {% endif %}
+            {% else %}
+                <div class="led"></div>
+            {% endif %}
         </div>
 
         <ul>
@@ -12,16 +23,26 @@
         </ul>
     </div>
 
-    <a id="tftools" class href="{{ path('home') }}">
+    <a id="tftools" href="{{ path('home') }}">
         <img src="{{ asset('images/tft-icon.svg') }}" alt="TFTools Logo">
     </a>
 
     <div class="nav-right">
-        <a href="{{ path('admin') }}" class="nav-btn">Admin</a>
-        <a class="nav-btn">Connexion</a>
-        {#  <a>Nom</a>
-            <a>Lier à TFT</a>
-            <a>Déconnexion</a> #}
+        {% if app.user %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <select>
+                    <option>Anonyme</option>
+                    <option>Admin</option>
+                </select>
+            {% else %}
+                <a class="nav-btn" href="{{ path('compte') }}"><i class="fa-solid fa-user-ninja"></i> Compte</a>
+            {% endif %}
+            <a class="nav-btn" href="{{ path('app_deconnexion') }}">Déconnexion</a>
+        {% else %}
+            <a class="nav-btn" href="{{ path('app_connexion') }}">Connexion</a>
+            <a class="nav-btn" href="{{ path('app_inscription') }}">Inscription</a>
+        {% endif %}
+
     </div>
 
 

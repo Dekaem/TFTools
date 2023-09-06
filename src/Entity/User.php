@@ -29,8 +29,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column]
-    private ?bool $riotLinked = null;
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $riotAccount = null;
 
     public function getId(): ?int
     {
@@ -56,7 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -64,11 +64,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
     public function setRoles(array $roles): static
@@ -102,14 +98,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function isRiotLinked(): ?bool
+    public function getRiotAccount(): ?string
     {
-        return $this->riotLinked;
+        return $this->riotAccount;
     }
 
-    public function setRiotLinked(bool $riotLinked): static
+    public function setRiotAccount(?string $riotAccount): static
     {
-        $this->riotLinked = $riotLinked;
+        $this->riotAccount = $riotAccount;
 
         return $this;
     }

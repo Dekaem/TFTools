@@ -55,8 +55,19 @@ nav {
             .led {
                 width: 10px;
                 height: 10px;
-                background-color: var(--red);
+                background-color: #535353;
                 border-radius: 50%;
+            }
+
+            .led-not-linked{
+                background-color: var(--red);
+            }
+
+            .led-linked{
+                background-color: var(--green);
+            }
+            .led-admin{
+                background-color: var(--blue);
             }
         }
     }
@@ -94,6 +105,13 @@ nav {
         display: flex;
         gap: 30px;
         list-style: none;
+    }
+
+    select {
+        font-size: 16px;
+        padding: 9px 18px;
+        border: none;
+        border-radius: 6px;
     }
 }
 
