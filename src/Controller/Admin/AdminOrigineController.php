@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/origine', name: 'admin_origine')]
+#[Route('/admin/trait', name: 'admin_origine')]
 class AdminOrigineController extends AbstractController {
     #[Route('/', name: '_lister')]
     public function lister(OrigineRepository $origineRepository): Response {
@@ -24,7 +24,7 @@ class AdminOrigineController extends AbstractController {
     #[Route('/modifier/{id}', name: '_modifier')]
     public function editer(Request $request, EntityManagerInterface $entityManager, Origine $origine): Response {
 
-        $msg = $origine->getId() == null ? "L'origine a été ajoutée avec succès !" : "L'origine a été modifiée avec succès !";
+        $msg = $origine->getId() == null ? "Le trait a été ajouté avec succès !" : "Le trait a été modifié avec succès !";
         $form = $this->createForm(OrigineType::class, $origine);
         $form->handleRequest($request);
 
@@ -45,7 +45,7 @@ class AdminOrigineController extends AbstractController {
 
         $entityManager->remove($origine);
         $entityManager->flush();
-        $this->addFlash('success', "L'origine a été supprimée avec succès !");
+        $this->addFlash('success', "Le trait a été supprimé avec succès !");
         return $this->redirectToRoute('admin_origine_lister');
     }
 }

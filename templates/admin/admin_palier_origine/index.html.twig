@@ -1,0 +1,51 @@
+{% extends '/admin/admin_base.html.twig' %}
+
+{% block title %}Paliers{% endblock %}
+
+{% block body %}
+
+    <div class="container-admin">
+
+        <h1>Liste des paliers selon les traits</h1>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <table class="table" >
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Trait</th>
+                <th scope="col">Palier</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+                <th scope="col">
+                    <a href="{{ path('admin_palier_ajouter') }}">➕</a>
+                </th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for palier in paliers %}
+                <tr>
+                    <th scope="row">{{ palier.id }}</th>
+                    <td >{{ palier.origine.nom }}</td>
+                    <td >{{ palier.palier.numero }}</td>
+                    <td >{{ palier.description }}</td>
+                    <td>
+                        <a href="{{ path('admin_palier_modifier', {'id': palier.id}) }}">🖊️</a>
+                        <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce palier ? Attention cette action est irréversible.')" href="{{ path('admin_palier_supprimer', {'id': palier.id}) }}">🗑️</a>
+                    </td>
+                </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

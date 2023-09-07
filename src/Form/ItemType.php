@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Item;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,6 +16,7 @@ class ItemType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('objets')
+            ->add('valider', SubmitType::class, ['attr' => ['class' => 'btn btn-primary']])
         ;
     }
 

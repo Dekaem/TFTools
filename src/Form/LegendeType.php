@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Legende;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,6 +15,7 @@ class LegendeType extends AbstractType
         $builder
             ->add('nom')
             ->add('specialite')
+            ->add('valider', SubmitType::class, ['attr' => ['class' => 'btn btn-primary']])
         ;
     }
 

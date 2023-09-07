@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Objet;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,6 +18,7 @@ class ObjetType extends AbstractType
             ->add('embleme')
             ->add('recette')
             ->add('champions')
+            ->add('valider', SubmitType::class, ['attr' => ['class' => 'btn btn-primary']])
         ;
     }
 
