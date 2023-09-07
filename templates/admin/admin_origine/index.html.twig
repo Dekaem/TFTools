@@ -8,14 +8,6 @@
 
         <h1>Liste des traits</h1>
 
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-{{ label }}" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-
         <table class="table" >
             <thead>
             <tr>
@@ -35,7 +27,7 @@
                 <tr>
                     <th scope="row">{{ origine.id }}</th>
                     <td class="img-name">
-                        <img src="https://rerollcdn.com/icons/{{ origine.nom }}.png" alt="{{ origine.nom }}">
+                        <img src="{{ asset('images/traits/' ~ origine.nom ~ '.png') }}">
                         {{ origine.nom }}
                     </td>
                     <td >{{ origine.placeMoyenne }}</td>

@@ -38,6 +38,7 @@ class AdminPalierOrigineController extends AbstractController {
 
         return $this->render('admin/admin_palier_origine/ajouter.html.twig', [
             'form' => $form,
+            'action' => $palier->getId() == null ? 'Ajouter' : 'Modifier'
         ]);
     }
 

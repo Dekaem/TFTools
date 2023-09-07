@@ -35,7 +35,12 @@
             {% for palier in paliers %}
                 <tr>
                     <th scope="row">{{ palier.id }}</th>
-                    <td >{{ palier.origine.nom }}</td>
+                    <td>
+                        
+                        <img src="{{ asset('images/traits/' ~ palier.origine.nom ~ '.png') }}">
+                        
+                        {{ palier.origine.nom }}
+                    </td>
                     <td >{{ palier.palier.numero }}</td>
                     <td >{{ palier.description }}</td>
                     <td>

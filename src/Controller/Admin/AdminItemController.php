@@ -37,6 +37,7 @@ class AdminItemController extends AbstractController {
 
         return $this->render('admin/admin_item/ajouter.html.twig', [
             'form' => $form,
+            'action' => $item->getId() == null ? 'Ajouter' : 'Modifier'
         ]);
     }
 

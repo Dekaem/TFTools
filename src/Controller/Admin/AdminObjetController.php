@@ -37,6 +37,7 @@ class AdminObjetController extends AbstractController {
 
         return $this->render('admin/admin_objet/ajouter.html.twig', [
             'form' => $form,
+            'action' => $objet->getId() == null ? 'Ajouter' : 'Modifier'
         ]);
     }
 

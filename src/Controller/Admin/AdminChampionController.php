@@ -37,6 +37,7 @@ class AdminChampionController extends AbstractController {
 
         return $this->render('admin/admin_champion/ajouter.html.twig', [
             'form' => $form,
+            'action' => $champion->getId() == null ? 'Ajouter' : 'Modifier'
         ]);
     }
 

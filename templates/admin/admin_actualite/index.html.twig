@@ -8,21 +8,13 @@
 
         <h1>Liste des actualités</h1>
 
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-{{ label }}" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-
         <table class="table" >
             <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Titre</th>
-                <th scope="col">Date de publication</th>
                 <th scope="col">Illustration</th>
+                <th scope="col">Date de publication</th>
                 <th scope="col">Actions</th>
                 <th scope="col">
                     <a href="{{ path('admin_actualite_ajouter') }}">➕</a>
@@ -36,8 +28,10 @@
                 <tr>
                     <th scope="row">{{ actualite.id }}</th>
                     <td>{{ actualite.titre }}</td>
+                    <td class="illustration">
+                        <img src="{{ asset('uploads/actualites/illustrations/' ~ actualite.illustration) }}" style="width: 150px;">
+                    </td>
                     <td>{{ actualite.datePublication | date('d/m/Y') }}</td>
-                    <td class="illustration"><img src="{{ actualite.illustration }}" alt="{{ actualite.titre }}"></td>
                     <td>
                         <a href="{{ path('admin_actualite_modifier', {'id': actualite.id}) }}">🖊️</a>
                         <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette actualité ? Attention cette action est irréversible.')" href="{{ path('admin_actualite_supprimer', {'id': actualite.id}) }}">🗑️</a>

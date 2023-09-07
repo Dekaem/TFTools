@@ -9,8 +9,16 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ChampionRepository::class)]
-class Champion
-{
+class Champion {
+
+    const TIERS = [
+        '1' => 1,
+        '2' => 2,
+        '3' => 3,
+        '4' => 4,
+        '5' => 5,
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

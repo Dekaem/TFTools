@@ -1,14 +1,18 @@
 {% extends '/admin/admin_base.html.twig' %}
 
-{% block title %}Ajouter une composition{% endblock %}
+{% block title %}{{ action }} une composition{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1>Ajouter une composition</h1>
+        <h1>{{ action }} une composition</h1>
         {{  form_start(form) }}
 
         <div class="form-row">
             {{  form_row(form.nom) }}
+        </div>
+
+        <div class="form-row">
+            {{  form_row(form.legende) }}
         </div>
 
         <div class="form-row">

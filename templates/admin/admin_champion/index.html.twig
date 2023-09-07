@@ -8,14 +8,6 @@
 
         <h1>Liste des champions</h1>
 
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-{{ label }}" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-
         <table class="table" >
             <thead>
             <tr>
@@ -36,7 +28,7 @@
                 <tr>
                     <th scope="row">{{ champion.id }}</th>
                     <td class="img-name">
-                        <img src="https://www.mobafire.com/images/tft/set9/champion/icon/{{ champion.nom | lower }}.png" alt="{{ champion.nom }}">
+                        <img src="{{ asset('images/champions/' ~ champion.nom ~ '.png') }}">
                         {{ champion.nom }}
                     </td>
                     <td class="td-trait">

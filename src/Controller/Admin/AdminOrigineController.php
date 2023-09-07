@@ -37,6 +37,7 @@ class AdminOrigineController extends AbstractController {
 
         return $this->render('admin/admin_origine/ajouter.html.twig', [
             'form' => $form,
+            'action' => $origine->getId() == null ? 'Ajouter' : 'Modifier'
         ]);
     }
 

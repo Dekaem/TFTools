@@ -8,8 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LegendeRepository::class)]
-class Legende
-{
+class Legende {
+
+    const SPECIALITES = [
+        'Couscous' => 'Couscous'
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

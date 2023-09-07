@@ -29,6 +29,12 @@ class AdminCompositionController extends AbstractController {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if (count($composition->getChampions()) != 9) {
+                $this->addFlash('danger', 'Votre composition doit contenir 9 champions');
+                return $this->redirectToRoute('admin_composition_ajouter');
+            }
+
             $entityManager->persist($composition);
             $entityManager->flush();
             $this->addFlash('success', $msg);
@@ -37,6 +43,7 @@ class AdminCompositionController extends AbstractController {
 
         return $this->render('admin/admin_composition/ajouter.html.twig', [
             'form' => $form,
+            'action' => $composition->getId() == null ? 'Ajouter' : 'Modifier'
         ]);
     }
 

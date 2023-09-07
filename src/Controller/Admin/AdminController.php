@@ -9,6 +9,7 @@ use App\Repository\ItemRepository;
 use App\Repository\LegendeRepository;
 use App\Repository\ObjetRepository;
 use App\Repository\OrigineRepository;
+use App\Repository\PalierOrigineRepository;
 use App\Repository\PalierRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,7 +25,7 @@ class AdminController extends AbstractController
         ItemRepository $itemRepository,
         ObjetRepository $objetRepository,
         OrigineRepository $origineRepository,
-        PalierRepository $palierRepository,
+        PalierOrigineRepository $palierOrigineRepository,
         ChampionRepository $championRepository,
         CompositionRepository $compositionRepository,
         LegendeRepository $legendeRepository
@@ -37,7 +38,7 @@ class AdminController extends AbstractController
             'nombreItem' => count($itemRepository->findAll()),
             'nombreObjet' => count($objetRepository->findAll()),
             'nombreOrigine' => count($origineRepository->findAll()),
-            'nombrePalier' => count($palierRepository->findAll()),
+            'nombrePalier' => count($palierOrigineRepository->findAll()),
             'nombreChamp' => count($championRepository->findAll()),
             'nombreCompo' => count($compositionRepository->findAll()),
             'nombreLegende' => count($legendeRepository->findAll())

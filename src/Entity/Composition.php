@@ -2,14 +2,28 @@
 
 namespace App\Entity;
 
+use App\Repository\ChampionRepository;
 use App\Repository\CompositionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: CompositionRepository::class)]
-class Composition
-{
+class Composition {
+
+    const PLACEMOYENNE = [
+        '1' => 1,
+        '2' => 2,
+        '3' => 3,
+        '4' => 4,
+        '5' => 5,
+        '6' => 6,
+        '7' => 7,
+        '8' => 8
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

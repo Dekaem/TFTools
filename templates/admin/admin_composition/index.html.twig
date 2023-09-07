@@ -8,20 +8,13 @@
 
         <h1>Liste des compositions</h1>
 
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-{{ label }}" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-
         <table class="table" >
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Place moyenne</th>
                 <th scope="col">Nom</th>
+                <th scope="col">Légende conseillée</th>
+                <th scope="col">Place moyenne</th>
                 <th scope="col">Actions</th>
                 <th scope="col">
                     <a href="{{ path('admin_composition_ajouter') }}">➕</a>
@@ -34,8 +27,9 @@
             {% for composition in compositions %}
                 <tr>
                     <th scope="row">{{ composition.id }}</th>
-                    <th >{{ composition.placeMoyenne }}</th>
                     <td>{{ composition.nom }}</td>
+                    <td>{{ composition.legende }}</td>
+                    <th >{{ composition.placeMoyenne }}</th>
                     <td>
                         <a href="{{ path('admin_composition_modifier', {'id': composition.id}) }}">🖊️</a>
                         <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer la composition {{ composition.nom }} ? Attention cette action est irréversible.')" href="{{ path('admin_composition_supprimer', {'id': composition.id}) }}">🗑️</a>
