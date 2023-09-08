@@ -8,6 +8,8 @@ use App\Entity\Objet;
 use App\Entity\Origine;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,13 +21,21 @@ class ObjetType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('embleme', null, [
-                'label' => 'Est-ce un emblème ?',
+            ->add('embleme', CheckboxType::class, [
+                'label' => "C'est un emblème",
+                'required' => false
             ])
-            ->add('recette',EntityType::class, [
-                'label' => 'Recette',
+            ->add('premierItem',EntityType::class, [
+                'label' => 'Premier item',
                 'class' => Item::class,
-                'multiple' => true,
+                'multiple' => false,
+                'choice_label' => 'nom',
+                'required' => true
+            ])
+            ->add('secondItem',EntityType::class, [
+                'label' => 'Second item',
+                'class' => Item::class,
+                'multiple' => false,
                 'choice_label' => 'nom',
                 'required' => true
             ])

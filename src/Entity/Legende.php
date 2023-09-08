@@ -11,7 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Legende {
 
     const SPECIALITES = [
-        'Couscous' => 'Couscous'
+        'Direction' => 'Direction',
+        'Or' => 'Or',
+        'Items' => 'Items',
+        'Pouvoir de combat' => 'Pouvoir de combat',
+        'Flexibilité' => 'Flexibilité'
     ];
 
     #[ORM\Id]

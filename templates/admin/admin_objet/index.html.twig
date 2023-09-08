@@ -36,17 +36,17 @@
                 <tr>
                     <th scope="row">{{ objet.id }}</th>
                     <td class="img-name">
-                        <img src="{{ asset('images/objets/' ~ objet.nom ~ '.png') }}">
+                        <img src="{{ asset('images/objets/' ~ objet.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} ) ~ '.png') }}">
                         {{ objet.nom }}
                     </td>
                     <td>{{ objet.embleme ? 'Oui' : 'Non' }}</td>
                     <td>
-                        {% for item in objet.recette %}
-                            <div>
-                                <img src="{{ asset('images/items/'~ item.nom ~ '.png') }}">
-                                {{ item.nom}}
-                            </div>
-                        {% endfor %}
+                        <div>
+                            <img src="{{ asset('images/items/'~ objet.premierItem.nom ~ '.png') }}">
+                            {{ objet.premierItem.nom}}
+                            <img src="{{ asset('images/items/'~ objet.secondItem.nom ~ '.png') }}">
+                            {{ objet.secondItem.nom}}
+                        </div>
                     </td>
                     <td>
                         <a href="{{ path('admin_objet_modifier', {'id': objet.id}) }}">🖊️</a>

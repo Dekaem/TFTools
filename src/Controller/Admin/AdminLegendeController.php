@@ -37,6 +37,7 @@ class AdminLegendeController extends AbstractController {
 
         return $this->render('admin/admin_legende/ajouter.html.twig', [
             'form' => $form,
+            'legende' => $legende->getNom(),
             'action' => $legende->getId() == null ? 'Ajouter' : 'Modifier'
         ]);
     }

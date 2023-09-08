@@ -35,7 +35,7 @@
                 <tr>
                     <th scope="row">{{ item.id }}</th>
                     <td class="img-name">
-                        <img src="https://rerollcdn.com/items/{{ item.nom }}.png">
+                        <img src="{{ asset('images/items/' ~ item.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'î': 'i' } ) ~ '.png') }}">
                         {{ item.nom }}
                     </td>
                     <td class="description">

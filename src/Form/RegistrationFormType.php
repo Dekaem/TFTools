@@ -27,9 +27,6 @@ class RegistrationFormType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer votre mot de passe'],
             ])
-            ->add('riotAccount', null, [
-                'label' => 'Liez votre compte Riot'
-            ])
         ;
     }
 

@@ -12,6 +12,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+    const ROLES = [
+       'Administrateur' => 'admin',
+       'Utilisateur' => 'user'
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -27,10 +33,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+
     private ?string $password = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
-    private ?string $riotAccount = null;
+    #[ORM\Column]
+    private ?bool $riotAccount = null;
+
+    #[ORM\Column(length: 30)]
+    private ?string $pseudo = null;
 
     public function getId(): ?int
     {
@@ -98,14 +108,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getRiotAccount(): ?string
+    public function isRiotAccount(): ?bool
     {
         return $this->riotAccount;
     }
 
-    public function setRiotAccount(?string $riotAccount): static
+    public function setRiotAccount(bool $riotAccount): static
     {
         $this->riotAccount = $riotAccount;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): static
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }

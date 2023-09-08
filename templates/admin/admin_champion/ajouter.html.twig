@@ -8,6 +8,10 @@
         {{  form_start(form) }}
 
         <div class="form-row">
+            {% if champion is not null %}
+                <img src="{{ asset('images/champions/' ~ champion | lower | replace({' ': '_', "'": '-'}) ~ '.png') }}">
+            {% endif %}
+
             {{  form_row(form.nom) }}
         </div>
 

@@ -22,7 +22,7 @@ class Item
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: Objet::class, mappedBy: 'recette')]
+    #[ORM\OneToMany(mappedBy: 'premierItem', targetEntity: Objet::class)]
     private Collection $objets;
 
     public function __construct()
@@ -71,7 +71,7 @@ class Item
     {
         if (!$this->objets->contains($objet)) {
             $this->objets->add($objet);
-            $objet->addRecette($this);
+            $objet->setPremierItem($this);
         }
 
         return $this;
@@ -80,7 +80,10 @@ class Item
     public function removeObjet(Objet $objet): static
     {
         if ($this->objets->removeElement($objet)) {
-            $objet->removeRecette($this);
+            // set the owning side to null (unless already changed)
+            if ($objet->getPremierItem() === $this) {
+                $objet->setPremierItem(null);
+            }
         }
 
         return $this;

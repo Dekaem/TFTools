@@ -31,6 +31,14 @@ class ChampionType extends AbstractType
                 'choice_label' => 'nom',
                 'required' => true
             ])
+            ->add('objets', EntityType::class, [
+                'label' => 'Les meilleurs objets (3 <i class="fa-solid fa-cubes"></i>)',
+                'label_html' => true,
+                'class' => Objet::class,
+                'multiple' => true,
+                'choice_label' => 'nom',
+                'required' => true
+            ])
             ->add('valider', SubmitType::class, ['attr' => ['class' => 'btn btn-primary']])
         ;
     }

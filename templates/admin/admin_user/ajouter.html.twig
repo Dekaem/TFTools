@@ -1,0 +1,34 @@
+{% extends '/admin/admin_base.html.twig' %}
+
+{% block title %}{{ action }} un utilisateur{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ action }} un utilisateur</h1>
+        {{  form_start(form) }}
+
+        <div class="form-row">
+            {{  form_row(form.pseudo) }}
+        </div>
+
+        <div class="form-row">
+            {{  form_row(form.choixRole) }}
+        </div>
+
+        <div class="form-row">
+            {{  form_row(form.email) }}
+        </div>
+
+        <div class="form-row">
+            {{  form_row(form.mdp) }}
+        </div>
+
+        <div class="form-row">
+            {{  form_row(form.riotAccount) }}
+        </div>
+
+        {{  form_end(form) }}
+    </div>
+
+
+{% endblock %}

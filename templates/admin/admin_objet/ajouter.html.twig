@@ -8,6 +8,9 @@
         {{  form_start(form) }}
 
         <div class="form-row">
+            {% if objet is not null %}
+                <img src="{{ asset('images/objets/' ~ objet | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} ) ~ '.png') }}">
+            {% endif %}
             {{  form_row(form.nom) }}
         </div>
 
@@ -15,12 +18,20 @@
             {{  form_row(form.description) }}
         </div>
 
-        <div class="form-row">
-            {{  form_row(form.embleme) }}
-        </div>
+        <div class="">
+            <h3>Recette :</h3>
 
-        <div class="form-row">
-            {{  form_row(form.recette) }}
+            <div class="form-row">
+                {{  form_row(form.embleme) }}
+            </div>
+
+            <div class="form-row">
+                {{  form_row(form.premierItem) }}
+            </div>
+
+            <div class="form-row">
+                {{  form_row(form.secondItem) }}
+            </div>
         </div>
 
         {{  form_end(form) }}

@@ -28,7 +28,7 @@
                 <tr>
                     <th scope="row">{{ champion.id }}</th>
                     <td class="img-name">
-                        <img src="{{ asset('images/champions/' ~ champion.nom ~ '.png') }}">
+                        <img src="{{ asset('images/champions/' ~ champion.nom | lower | replace({' ': '_', "'": '-'}) ~ '.png') }}">
                         {{ champion.nom }}
                     </td>
                     <td class="td-trait">

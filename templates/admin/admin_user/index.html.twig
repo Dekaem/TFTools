@@ -1,0 +1,46 @@
+{% extends '/admin/admin_base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="container-admin">
+
+        <h1>Liste des utilisateurs</h1>
+
+        <table class="table" >
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Lié à Riot</th>
+                    <th scope="col">Rôle</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <a href="{{ path('admin_champion_ajouter') }}">➕</a>
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.pseudo }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.riotAccount ? 'Oui' : 'Non' }}</td>
+                    <td>{{ user.roles == ['ROLE_ADMIN'] ? 'Administrateur' : 'Utilisateur'}}</td>
+                    <td>
+                        <a href="{{ path('admin_user_modifier', {'id': user.id}) }}">🖊️</a>
+                        {% if user.id != app.user.id %}
+                            <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ user.pseudo }} ? Attention cette action est irréversible.')" href="{{ path('admin_user_supprimer', {'id': user.id}) }}">🗑️</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

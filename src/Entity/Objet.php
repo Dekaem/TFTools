@@ -25,15 +25,19 @@ class Objet
     #[ORM\Column]
     private ?bool $embleme = null;
 
-    #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'objets')]
-    private Collection $recette;
-
     #[ORM\ManyToMany(targetEntity: Champion::class, mappedBy: 'stuff')]
     private Collection $champions;
 
+    #[ORM\ManyToOne(inversedBy: 'objets')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Item $premierItem = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Item $secondItem = null;
+
     public function __construct()
     {
-        $this->recette = new ArrayCollection();
         $this->champions = new ArrayCollection();
     }
 
@@ -79,30 +83,6 @@ class Objet
     }
 
     /**
-     * @return Collection<int, Item>
-     */
-    public function getRecette(): Collection
-    {
-        return $this->recette;
-    }
-
-    public function addRecette(Item $recette): static
-    {
-        if (!$this->recette->contains($recette)) {
-            $this->recette->add($recette);
-        }
-
-        return $this;
-    }
-
-    public function removeRecette(Item $recette): static
-    {
-        $this->recette->removeElement($recette);
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Champion>
      */
     public function getChampions(): Collection
@@ -125,6 +105,30 @@ class Objet
         if ($this->champions->removeElement($champion)) {
             $champion->removeStuff($this);
         }
+
+        return $this;
+    }
+
+    public function getPremierItem(): ?Item
+    {
+        return $this->premierItem;
+    }
+
+    public function setPremierItem(?Item $premierItem): static
+    {
+        $this->premierItem = $premierItem;
+
+        return $this;
+    }
+
+    public function getSecondItem(): ?Item
+    {
+        return $this->secondItem;
+    }
+
+    public function setSecondItem(?Item $secondItem): static
+    {
+        $this->secondItem = $secondItem;
 
         return $this;
     }
