@@ -29,6 +29,12 @@ class AdminChampionController extends AbstractController {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if (count($champion->getStuff()) != 3) {
+                $this->addFlash('danger', 'Votre champion doit contenir 3 objets');
+                return $this->redirectToRoute('admin_champion_lister');
+            }
+
             $entityManager->persist($champion);
             $entityManager->flush();
             $this->addFlash('success', $msg);

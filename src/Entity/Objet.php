@@ -29,11 +29,11 @@ class Objet
     private Collection $champions;
 
     #[ORM\ManyToOne(inversedBy: 'objets')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Item $premierItem = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'objets')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Item $secondItem = null;
 
     public function __construct()

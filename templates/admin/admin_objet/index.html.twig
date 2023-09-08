@@ -41,12 +41,14 @@
                     </td>
                     <td>{{ objet.embleme ? 'Oui' : 'Non' }}</td>
                     <td>
-                        <div>
-                            <img src="{{ asset('images/items/'~ objet.premierItem.nom ~ '.png') }}">
-                            {{ objet.premierItem.nom}}
-                            <img src="{{ asset('images/items/'~ objet.secondItem.nom ~ '.png') }}">
-                            {{ objet.secondItem.nom}}
-                        </div>
+                        {% if objet.premierItem %}
+                            <div class="recette">
+                                <img title="{{ objet.premierItem.nom}}" src="{{ asset('images/items/'~ objet.premierItem.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} )~ '.png') }}">
+                                <img title="{{ objet.secondItem.nom}}" src="{{ asset('images/items/'~ objet.secondItem.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} ) ~ '.png') }}">
+                            </div>
+                        {% else %}
+                            Aucune recette
+                        {% endif %}
                     </td>
                     <td>
                         <a href="{{ path('admin_objet_modifier', {'id': objet.id}) }}">🖊️</a>

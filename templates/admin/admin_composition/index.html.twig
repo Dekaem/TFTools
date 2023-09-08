@@ -28,7 +28,7 @@
                 <tr>
                     <th scope="row">{{ composition.id }}</th>
                     <td>{{ composition.nom }}</td>
-                    <td>{{ composition.legende }}</td>
+                    <td>{{ composition.legende.nom }}</td>
                     <th >{{ composition.placeMoyenne }}</th>
                     <td>
                         <a href="{{ path('admin_composition_modifier', {'id': composition.id}) }}">🖊️</a>

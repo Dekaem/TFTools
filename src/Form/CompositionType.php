@@ -44,8 +44,8 @@ class CompositionType extends AbstractType
                 },
             ])
             ->add('legende', EntityType::class, [
-                'by_reference' => false,
                 'class' => Legende::class,
+                'choice_label' => 'nom',
                 'multiple' => false
             ])
             ->add('valider', SubmitType::class, ['attr' => ['class' => 'btn btn-primary']])

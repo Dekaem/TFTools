@@ -105,6 +105,13 @@ nav {
         padding: 9px 18px;
     }
 
+    .nav-btn-white {
+        border-radius: 6px;
+        color: black;
+        background-color: white;
+        padding: 9px 18px;
+    }
+
     select {
         font-size: 16px;
         padding: 9px 18px;
@@ -170,6 +177,24 @@ nav {
             vertical-align: middle;
         }
 
+        .img-name {
+            img {
+                width: 50px;
+            }
+        }
+
+        .recette {
+            img {
+                width: 40px;
+            }
+        }
+
+        .cost {
+            img {
+                width: 17px;
+            }
+        }
+
         a {
             text-decoration: none;
             &:hover {
@@ -178,20 +203,11 @@ nav {
         }
     }
 }
-// --------------------------------------------------  CHAMPION  ---------------------------------------------------- //
-.container-admin {
 
-    table {
-        .img-name {
-            img {
-                width: 50px;
-            }
-        }
-
-        .cost {
-            img {
-                width: 17px;
-            }
+.container {
+    form {
+        #champion_origines, #champion_stuff, #composition_champions {
+            height: 400px;
         }
     }
 }

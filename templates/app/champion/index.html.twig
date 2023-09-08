@@ -1,20 +1,32 @@
-{% extends '../base.html.twig' %}
+{% extends 'app/base.html.twig' %}
 
-{% block title %}Hello ChampionController!{% endblock %}
+{% block title %}Les champions{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/vsailly2022/workspace/tft/src/Controller/ChampionController.php'|file_link(0) }}">src/Controller/ChampionController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/vsailly2022/workspace/tft/templates/admin_champion/index.html.twig'|file_link(0) }}">templates/champion/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container-page">
+        <h1>Les champions</h1>
+        <div class="row mt-5">
+            {%  for champ in champions %}
+                <div class="col-2 card-center">
+                        <div class="card-champ">
+                            <img class="card-img-top" src="{{ asset('images/champions/' ~ champ.nom | lower | replace({' ': '_', "'": '-'}) ~ '.png') }}" alt=""/>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ champ.nom }}</h5>
+                                <p class="card-text">
+                                    {%  for origine in champ.origines %}
+                                        {{ origine.nom }}
+                                    {%  endfor %}
+                                </p>
+                            </div>
+                            <div class="champ-objet">
+                                {% for objet in champ.stuff %}
+                                    <img src="{{ asset('images/objets/' ~ objet.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} ) ~ '.png') }}">
+                                {%  endfor %}
+                            </div>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -27,7 +27,7 @@
                 <tr>
                     <th scope="row">{{ legende.id }}</th>
                     <td class="img-name">
-                        <img src="{{ asset('images/legendes/' ~ legende.nom | lower | replace({' ': '_', "'": '-'}) ~ '.png') }}">
+                        <img src="{{ asset('images/legendes/' ~ legende.nom | lower | replace({' ': '_', "'": '-', 'î': 'i'}) ~ '.png') }}">
                         {{ legende.nom }}
                     </td>
                     <td >

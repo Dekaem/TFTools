@@ -15,6 +15,7 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Trait(s)</th>
                 <th scope="col">Coût</th>
+                <th scope="col">Meilleurs objets</th>
                 <th scope="col">Actions</th>
                 <th scope="col">
                     <a href="{{ path('admin_champion_ajouter') }}">➕</a>
@@ -38,7 +39,12 @@
                     </td>
                     <td class="cost">
                         {{ champion.tier }}
-                        <img src="{{ asset('images/po-icon.svg') }}" alt="Pièce d'or">
+                        <img src="{{ asset('images/home/po-icon.svg') }}" alt="Pièce d'or">
+                    </td>
+                    <td>
+                        {% for objet in champion.stuff %}
+                            <img style="width: 30px;" src="{{ asset('images/objets/' ~ objet.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} ) ~ '.png') }}">
+                        {% endfor %}
                     </td>
                     <td>
                         <a href="{{ path('admin_champion_modifier', {'id': champion.id}) }}">🖊️</a>

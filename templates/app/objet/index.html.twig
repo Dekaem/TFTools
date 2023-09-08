@@ -1,0 +1,27 @@
+{% extends 'app/base.html.twig' %}
+
+{% block title %}Les objets{% endblock %}
+
+{% block body %}
+
+    <div class="container-page">
+        <h1>Les objets (et leur recette)</h1>
+        <div class="row mt-5">
+            {%  for objet in objets %}
+                <div class="col-6 card-center">
+                    <div class="card-objet">
+                        <img class="card-img-top" src="{{ asset('images/objets/' ~ objet.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} ) ~ '.png') }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ objet.nom }}</h5>
+                        </div>
+                        <div class="champ-item">
+                            <img class="card-img-top" src="{{ asset('images/items/' ~ objet.premierItem.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} ) ~ '.png') }}">
+                            <span>+</span>
+                            <img class="card-img-top" src="{{ asset('images/items/' ~ objet.secondItem.nom | lower | replace({' ': '_', "'": '-', 'é': 'e', 'è': 'e', 'î': 'i', 'œ': 'oe', 'â': 'a'} ) ~ '.png') }}">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

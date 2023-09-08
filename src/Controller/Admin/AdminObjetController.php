@@ -29,6 +29,12 @@ class AdminObjetController extends AbstractController {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($form->get('recette')->getData()) {
+                $objet->setPremierItem(null);
+                $objet->setSecondItem(null);
+            }
+
             $entityManager->persist($objet);
             $entityManager->flush();
             $this->addFlash('success', $msg);

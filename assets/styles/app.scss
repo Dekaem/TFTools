@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 * {
     margin: 0;
     padding: 0;
@@ -101,6 +102,13 @@ nav {
         padding: 9px 18px;
     }
 
+    .nav-btn-white {
+        border-radius: 6px;
+        background-color: white;
+        color: black !important;
+        padding: 9px 18px;
+    }
+
     ul {
         display: flex;
         gap: 30px;
@@ -130,5 +138,73 @@ header, .homepage {
         margin: 0;
         padding: 0;
         display: block;
+    }
+}
+
+.container-page {
+    padding-top: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0c122c;
+    min-height: 1000px;
+    height: auto;
+
+    .compte {
+        color: #fff;
+        h1, p {
+            text-align: center;
+        }
+    }
+
+    h1 {
+        color: white;
+        font-size: 60px;
+    }
+
+    .card-actu {
+        width: 700px;
+        margin: 60px;
+
+    }
+
+    .card-champ {
+        width: 75px;
+        margin: 20px;
+        color: white;
+
+        .champ-objet {
+            img {
+                width: 20px;
+            }
+        }
+
+        p {
+            font-size: 13px;
+        }
+
+    }
+
+    .card-compo {
+        width: 1000px;
+        margin: 30px;
+        display: flex;
+        color: #DEC7A0;
+    }
+
+    .card-objet {
+        width: 75px;
+        margin: 20px;
+        color: white;
+
+        .champ-item {
+            img {
+                width: 20px;
+            }
+        }
+
+        p {
+            font-size: 13px;
+        }
     }
 }

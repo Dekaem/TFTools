@@ -1,20 +1,24 @@
-{% extends '../base.html.twig' %}
+{% extends 'app/base.html.twig' %}
 
-{% block title %}Hello ActualiteController!{% endblock %}
+{% block title %}Les actualités{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/vsailly2022/workspace/tft/src/Controller/ActualiteController.php'|file_link(0) }}">src/Controller/ActualiteController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/vsailly2022/workspace/tft/templates/actualite/index.html.twig'|file_link(0) }}">templates/actualite/index.html.twig</a></code></li>
-    </ul>
+<div class="container-page">
+    <h1>Les actualités</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            {%  for actu in actualites %}
+                <div class="card card-actu">
+                    <img class="card-img-top" src="{{ asset('uploads/actualites/illustrations/' ~ actu.illustration) }}" alt=""/>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ actu.titre }}</h5>
+                        <p class="card-text">{{ actu.datePublication | date('d/m/Y')}}</p>
+                        <p class="card-text">{{ actu.texte }}</p>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

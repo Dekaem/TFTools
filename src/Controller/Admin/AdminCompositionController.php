@@ -32,7 +32,7 @@ class AdminCompositionController extends AbstractController {
 
             if (count($composition->getChampions()) != 9) {
                 $this->addFlash('danger', 'Votre composition doit contenir 9 champions');
-                return $this->redirectToRoute('admin_composition_ajouter');
+                return $this->redirectToRoute('admin_composition_lister');
             }
 
             $entityManager->persist($composition);
